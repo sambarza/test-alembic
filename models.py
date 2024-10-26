@@ -12,6 +12,6 @@ class User(Base):
     email = Column(String(120), unique=True, nullable=False)
     created_at = Column(DateTime, server_default=func.now())
 
-DATABASE_URL = "mssql+pyodbc://sa:m4zsWP93GWvBrTU@localhost/database_name?driver=ODBC+Driver+17+for+SQL+Server"
+DATABASE_URL = "mssql+pyodbc://sa:m4zsWP93GWvBrTU@localhost/master?driver=ODBC+Driver+17+for+SQL+Server"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
