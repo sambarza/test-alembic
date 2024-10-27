@@ -5,12 +5,12 @@ def insert_users():
     session = Session(bind=engine)
     
     try:
-        user1 = User(name="Alice", email="alice@example.com")
-        user2 = User(name="Bob", email="bob@example.com")
-        
-        session.add(user1)
-        session.add(user2)
-        
+
+        for i in range(10000):
+            user = User(name="Alice", email=f"sam.{i}@example.com")
+            session.add(user)
+            print(f"Inserted {f"sam.{i}@example.com"}")
+
         session.commit()
 
         print("Record inseriti con successo!")
