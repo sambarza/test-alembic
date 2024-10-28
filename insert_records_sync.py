@@ -1,7 +1,8 @@
+from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
-from models import User, engine
+from models import User
 
-def insert_users():
+def insert_users(engine):
     session = Session(bind=engine)
     
     try:
@@ -21,4 +22,8 @@ def insert_users():
         session.close()
 
 if __name__ == "__main__":
-    insert_users()
+
+    DATABASE_URL = "mssql+pyodbc://sa:m4zsWP93GWvBrTU@localhost/master?driver=ODBC+Driver+17+for+SQL+Server"
+    engine = create_engine(DATABASE_URL)
+
+    insert_users(engine)
